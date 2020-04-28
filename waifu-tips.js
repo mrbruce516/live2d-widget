@@ -158,7 +158,8 @@ function loadWidget(config) {
 		if (modelTexturesId === null) {
 			let now = new Date().getHours();
 			if (now > 7 && now <= 18) modelTexturesId = 0;	// 加载皮肤
-			else if (now > 18 && now <= 6) modelTexturesId = 2;
+			else if ((now > 18 && now <= 24)||(now > 0 && now <= 6)) modelTexturesId = 2;
+			else modelTexturesId = 0;
 		}
 		loadModel(modelId, modelTexturesId);
 		fetch(waifuPath)

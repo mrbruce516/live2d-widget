@@ -153,9 +153,12 @@ function loadWidget(config) {
 		let modelId = localStorage.getItem("modelId"),
 			modelTexturesId = localStorage.getItem("modelTexturesId");
 		if (modelId === null) {
-			// 首次访问加载 指定模型 的 指定材质
-			modelId = 5; // 模型 ID
-			modelTexturesId = 0; // 材质 ID
+			modelId = 5;	// 加载模型
+		}
+		if (modelTexturesId === null) {
+			let now = new Date().getHours();
+			if (now > 7 && now <= 18) modelTexturesId = 0;	// 加载皮肤
+			else if (now > 18 && now <= 6) modelTexturesId = 2;
 		}
 		loadModel(modelId, modelTexturesId);
 		fetch(waifuPath)
